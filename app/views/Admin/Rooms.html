@@ -1,0 +1,52 @@
+{{set . "title" "admin"}}
+{{template "header.html" .}}
+<div id="wrap">
+    <div class="container" id="page-main">
+        <div class="row">
+            {{template "share/admin_navbar.html" .}}
+            <div class="box span8">
+                <div class="cell"> 所有频道 </div>
+                <div class="inner">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>status</th>
+                                <th>save logs</th>
+                                <th>show users</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .rooms}}
+                            <tr>
+                                <td >
+                                    <a href="/r/{{.RoomKey}}">{{.RoomKey}}</a>
+                                </td>
+                                <td >
+                                    {{if .Status}} 
+                                    <a href="/admin/{{.RoomKey}}/status"> ON </a>
+                                    {{else}} 
+                                    <a href="/admin/{{.RoomKey}}/status"> OFF </a>
+                                    {{end}}
+                                </td>
+                                <td >
+                                    {{if .SaveLogs}} 
+                                    <a href="/admin/{{.RoomKey}}/changelog"> ON </a>
+                                    {{else}} 
+                                    <a href="/admin/{{.RoomKey}}/changelog"> OFF </a>
+                                    {{end}}
+                                </td>
+                                <td>
+                                    <a href="/admin/{{.RoomKey}}/onlineUsers">online users</a>
+                                </td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}

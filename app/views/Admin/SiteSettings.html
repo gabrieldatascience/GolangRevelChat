@@ -1,0 +1,30 @@
+{{set . "title" "admin"}}
+{{template "header.html" .}}
+<div id="wrap">
+    <div class="container" id="page-main">
+        <div class="row">
+            {{template "share/admin_navbar.html" .}}
+            <div class="span8 box">
+                <br />
+                <form class="form-horizontal" action="{{url "Admin.SaveServerSettings"}}" method="post" accept-charset="utf-8">
+                    <div class="control-group">
+                        {{with $field := field "sf.Name" .}}
+                        <label class="control-label" for="name">name</label>
+                        <div class="controls">
+                            <input type="text" id="name" placeholder="server name" name="{{$field.Name}}" value="">
+                            <span class="error">{{$field.Error}}</span>
+                        </div>
+                        {{end}}
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}

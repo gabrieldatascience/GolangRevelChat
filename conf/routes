@@ -1,0 +1,49 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                                       Application.Index
+GET     /sessions/new                           Sessions.New
+POST    /sessions/create                        Sessions.Create
+GET     /sessions/destroy                       Sessions.Destroy
+
+GET     /user/sign_up                           Users.New
+GET     /user/edit/settings                     Users.EditSettings
+GET     /user/edit/settings                     Users.EditSettings
+GET     /user/myrooms                           Users.MyRooms
+GET     /user/{username}/profile                Users.Show
+POST    /user/save/settings                     Users.SaveSettings
+POST    /user/sign_up                           Users.Create
+POST    /user/changepasswd                      Users.ChangePasswd
+# POST    /user/avatar                            Users.Avatar
+
+POST    /favorite/room/{roomkey}                Favorite.FavoriteRoom
+
+GET     /rooms                                  Rooms.Index
+GET     /rooms/new                              Rooms.New
+GET     /r/{roomkey}                            Rooms.Show
+GET     /r/{roomkey}/users.json                 RoomApi.Users
+GET     /r/{roomkey}/edit                       Rooms.Edit
+POST    /r/{roomkey}/update                     Rooms.Update
+WS      /r/{roomkey}/chatting                   Websocket.Chat
+
+Get 	/r/{roomkey}/logs 						Rooms.Logs
+
+# admin
+Get     /admin                                  Admin.Index
+Get     /admin/site_settings                    Admin.SiteSettings
+POST    /admin/save_settings                    Admin.SaveServerSettings
+Get     /admin/users                            Admin.Users
+Get     /admin/rooms                            Admin.Rooms
+Get     /admin/{roomKey}/changelog              Admin.ChangeLogStatus
+Get     /admin/{roomKey}/status                 Admin.ChangeRunStatus 
+Get     /admin/{roomKey}/onlineUsers            Admin.OnlineUsers()
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/{<.+>filepath}              Static.Serve("public")
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

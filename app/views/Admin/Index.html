@@ -1,0 +1,102 @@
+{{set . "title" "admin"}}
+{{template "header.html" .}}
+<div id="wrap">
+    <div class="container" id="page-main">
+        <div class="row">
+            {{template "share/admin_navbar.html" .}}
+            <div class="span8">
+                <div class="row">
+                    <div class="box span8">
+                        <div class="cell"> 最新用户 </div>
+                        <div class="inner">
+                            <table class="topics table">
+                                <thead>
+                                    <tr>
+                                        <th class="w50">ID</th>
+                                        <th align="left" class="auto">username</th>
+                                        <th align="left" class="auto">Email</th>
+                                        <th class="w100">created_at</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{range .latestUsers}}
+                                    <tr>
+                                        <td class="w50">
+                                            {{.Id}}
+                                        </td>
+                                        <td class="auto">
+                                            {{.Name}}
+                                        </td>
+                                        <td class="auto">
+                                            {{.Email}}
+                                        </td>
+                                        <td class="w100">
+                                            <small class="gray">{{.Created}}</small>
+                                        </td>
+                                    </tr>
+                                    {{end}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box span4">
+                        <div class="cell">
+                            运行状态
+                        </div>
+                        <div class="inner">
+                            <table border="0" cellpadding="3" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" width="40%">
+                                            <span class="gray">服务器</span>
+                                        </td>
+                                        <td align="left">
+                                            <strong>{{.ServerName}}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" width="40%">
+                                            <span class="gray">频道总数</span>
+                                        </td>
+                                        <td align="left">
+                                            <strong>{{.roomCount}}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" width="40%">
+                                            <span class="gray">在线用户数</span>
+                                        </td>
+                                        <td align="left">
+                                            <strong>{{.onlineUserCount}}</strong>
+                                        </td>
+                                    </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                    <div class="box span4">
+                        <div class="cell">
+                            在线用户数
+                        </div>
+                        <div class="inner">
+                            <table class="table table-bordered">
+                                <tbody><tr>
+                                        <td align="left">
+                                        注册会员总数
+                                        </td>
+                                        <td align="left">
+                                            <strong>{{.userCount}}</strong>
+                                        </td>
+                                    </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}

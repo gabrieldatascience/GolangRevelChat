@@ -1,0 +1,135 @@
+.error {
+    color: red;
+}
+
+body{
+    /*background-color: #E0E0E0;*/
+}
+
+.room {
+    height: 150px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    background-color: #fdfdfd;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid #e2e2e9;
+    padding: 10px;
+}
+
+.room .heart{
+    float: right;
+}
+
+.chat-main, .chat-sidebar, .roomlist {
+    border: 1px solid #DDD;
+    background-color: #fff;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid #e2e2e9;
+    padding: 10px;
+}
+
+.chat-sidebar {
+    position: fixed;
+    right: 20px;
+}
+
+.chat-main {
+    height: 330px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-bottom: 10px;
+}
+
+
+.chat-area {
+    height: 80px;
+    margin-bottom: 10px;
+    border: 1px solid #DDD;
+    background-color: #fff;
+    border-bottom: 2px solid #e2e2e9;
+    padding: 10px;
+}
+
+.avatar {
+    float: left;
+    width: 80px;
+}
+
+.chat-form {
+    float: left;
+}
+
+.chat-form textarea {
+    width: 300px; 
+}
+
+.chat-help {
+    margin-left: 30px;
+    float: right;
+}
+
+.pagination .next {
+    float: right;
+}
+
+.userlist img {
+    width: 25px;
+    height: 25px;
+}
+
+.avatar img {
+    width: 60px;
+}
+
+.room-recentusers {
+    margin-top: 5px;
+}
+.room-recentusers img{
+    width: 25px;
+}
+
+.message-avatar img {
+    width: 15px;
+}
+
+.container-fluid ::-webkit-scrollbar { 
+    width: 3px; 
+    height: 3px;
+}   
+
+.container-fluid ::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+}
+
+.container-fluid ::-webkit-scrollbar-thumb{
+    height: 30px;
+    background-color: #08c;
+    -webkit-border-radius: 4px;
+} 
+.box {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+    border-bottom: 1px solid #E2E2E9;
+    margin-bottom: 20px;
+}
+
+.box .cell, .box .box-header {
+    padding: 10px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+#wrap {
+    background-color: #E0E0E0;
+    padding-top: 20px;
+}
+
+.avatar-list {
+    height: 23px;
+}

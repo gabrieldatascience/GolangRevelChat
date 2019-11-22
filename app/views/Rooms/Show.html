@@ -1,0 +1,60 @@
+{{set . "title" .roomkey}}
+
+{{append . "moreScripts" "/js/app.js"}}
+
+{{template "header.html" .}}
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3 roomlist">
+            <h2>rooms</h2>
+            <ul>
+                {{range .rooms}}
+                <li><a href="/r/{{.RoomKey}}" target="_blank">{{.Title}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+
+        <div class="span6">
+            <div class="chat-main">
+                recent message:
+                {{range .latestMessages}}
+                [{{.UserName}}] {{.Text}} <br />
+                {{end}}
+                <a href="/r/{{.room.RoomKey}}/logs" target="_blank">more logs ...</a>
+                <br>
+                new message: <br />
+            </div>
+
+            <div class="chat-area">
+                <div class="avatar">
+                    <img src="{{.userAvatar}}" alt="" />
+                </div>
+                <div class="chat-form">
+                    <textarea rows="3" id="chat-form"></textarea>
+                    <button class="btn btn-mini" id="sayit-button" >send</button>
+                </div>
+                <div class="chat-help">
+                </div>
+            </div>
+        </div>
+
+        <div class="span3 chat-sidebar">
+            <h2>
+                <span class="room-title"> {{.room.Title}}</span>
+            </h1>
+            <div class="room-info well">
+                {{.room.Description}}
+            </div>
+            <div class="userlist" id="userlist">
+                <ul>
+                    {{range .users}}
+                    <li><img src="{{.Avatar}}"/> <span>{{.Name}}</span></li>
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{{template "footer.html" .}}

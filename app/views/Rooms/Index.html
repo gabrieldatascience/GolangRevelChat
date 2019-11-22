@@ -1,0 +1,49 @@
+{{template "header.html" .}}
+<div class="container">
+    <div class="row">
+        {{range .roomLists}}
+        <div class="span3" id="room-{{.Id}}">
+            <div class="room">
+                <div class="room-header">
+                    <a href="/r/{{.RoomKey}}">{{.Id}} | {{.Title}}  </a>
+                    <span> {{if eq .Private true}}<i class="icon-lock"></i> {{end}} </span>
+                    <span class="heart"> 
+                        <a href="#" onclick="window.like_room({{.RoomKey}})" class="unstarred">☆</a>
+                    </span>
+                </div>
+                <div class="room-body">
+                    {{.Description}}
+                </div>
+                <div class="room-recentusers">
+                    {{range .RecentUsers}}
+                    <a href="/user/{{.Name}}/profile"> <img src="{{.Avatar}}" alt="" /> </a>
+                    {{end}}
+                </div>
+                <div class="room-footer">
+                </div>
+            </div>
+        </div>
+        {{end}} 
+    </div>
+
+    <div class="pagination">
+        <ul class="prev">
+            {{if eq .p 1 }} 
+            <li class="prev disabled"> <a href="#">← prev</a></li>
+            {{else}}
+            <li class="prev "> <a href="/rooms?p={{minus .p 1}}">← prev</a></li>
+            {{end}}
+
+        </ul>
+
+        <ul class="next">
+            {{if less .p .allPage }}
+            <li class="next"><a rel="next" href="/rooms?p={{add .p 1}}">next →</a></li>
+            {{else}}
+            <li class="disabled"><a rel="next" href="#">next →</a></li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+<script src="/public/js/like.js" type="text/javascript" charset="utf-8"></script>
+{{template "footer.html" .}}

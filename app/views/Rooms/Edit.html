@@ -1,0 +1,42 @@
+{{set . "title" "edit room"}}
+{{template "header.html" .}}
+<div class="container">
+<div class="row">
+    <div class="span6 offset3">
+        {{if .flash.error }}
+        <div class="alert alert-error">
+            {{.flash.error}}
+        </div>
+        {{end}}
+        {{if .flash.success }}
+        <div class="alert alert-success">
+            {{.flash.success }}
+        </div>
+        {{end}}
+        <br />
+
+        <form class="form-horizontal" action="/r/{{.room.RoomKey}}/update" method="post" accept-charset="utf-8">
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">title </label>
+                <div class="controls">
+                    <input type="text" id="inputEmail" placeholder="title" name="updateroom.Title" value="{{.room.Title}}">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">desc</label>
+                <div class="controls">
+                    <textarea rows=6 id="inputEmail" placeholder="Desc" name="updateroom.Desc">{{.room.Description}}</textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+{{template "footer.html" .}}

@@ -1,0 +1,33 @@
+{{set . "title" "admin"}}
+{{template "header.html" .}}
+<div id="wrap">
+    <div class="container" id="page-main">
+        <div class="row">
+            {{template "share/admin_navbar.html" .}}
+            <div class="span8 box">
+                <div class="cell"> All online users</div>
+                <div class="inner">
+                    <table class="topics table">
+                        <thead>
+                            <tr>
+                                <th align="left" class="auto">用户名</th>
+                                <th align="left" class="auto">Email</th>
+                                <th class="w100">注册时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .users}}
+                            <tr>
+                                <td> {{.Name}} </td>
+                                <td> {{.Email}} </td>
+                                <td> <img src="{{.Avatar}}" alt="" class="avatar-list" />  </td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer.html" .}}

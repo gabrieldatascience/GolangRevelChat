@@ -1,0 +1,21 @@
+{{set . "title" .user.Name}}
+{{template "header.html" .}}
+
+<div class="container">
+    <div class="row">
+        <div class="span6 offset3">
+            <div class="user-avatar">
+                <img src="{{.avatar}}" alt="" />
+            </div>
+            <div class="info">
+                <p> name: {{.user.Name}}</p>
+                <p> weibo: {{.user.Weibo}}</p>
+                <p> Github: {{.user.Github}}</p>
+                <p> Intro: {{.user.Introduction}}</p>
+                <p> Email: {{.user.Email}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}

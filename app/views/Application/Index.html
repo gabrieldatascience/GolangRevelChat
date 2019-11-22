@@ -1,0 +1,28 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+
+<div class="container">
+<h3>Join and chating...</h3>
+    <div class="row">
+        <div class="span6 offset3">
+            {{if .flash.error }}
+            <div class="alert alert-error">
+                {{.flash.error}}
+            </div>
+            {{end}}
+
+            {{if .flash.success }}
+            <div class="alert alert-success">
+                {{.flash.success}}
+            </div>
+            {{end}}
+            <br />
+            {{if not .user}}
+                {{template "share/userform.html" .}}
+            {{end}}
+        </div>
+    </div>
+</div>
+{{template "footer.html" .}}
+

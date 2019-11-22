@@ -1,0 +1,108 @@
+{{set . "title" "edit settings"}}
+{{template "header.html" .}}
+<div class="container">
+    <div class="row">
+        <div class="span9">
+            {{if .flash.error }}
+            <div class="alert alert-error">
+                {{.flash.error}}
+            </div>
+            {{end}}
+
+            {{if .flash.success}}
+            <div class="alert alert-success">
+                {{.flash.success}}
+            </div>
+            {{end}}
+
+            <br>
+
+            <form accept-charset="UTF-8" action="{{url "Users.SaveSettings"}}" class="form-horizontal" method="post">
+                <div class="control-group">
+                    <label class="control-label" for="user_nickname">Name:</label>
+                    <div class="controls">
+                        <input  disabled="disabled"  name="user[nickname]" size="50" type="text" value={{.user.Name}}>
+                    </div>
+                </div>
+
+                <div class="control-group email">
+                    <label class="email control-label" for="user_email">Email:</label>
+                    <div class="controls">
+                        <input disabled="disabled" name="user[email]"  type="email" value={{.user.Email}}>
+                    </div>
+                </div>
+
+                <div class="control-group ">
+                    <label class="control-label" for="site">Site:</label>
+                    <div class="controls">
+                        <input  name="setting.Site" id="site" type="text" value="{{.user.Site}}">
+                    </div>
+                </div>
+
+                <div class="control-group ">
+                    <label class="control-label" for="weibo">Weibo:</label>
+                    <div class="controls">
+                        <input class="span4" id="weibo" name="setting.Weibo" type="text" value="{{.user.Weibo}}">
+                    </div>
+                </div>
+                <div class="control-group ">
+                    <label class="control-label" for="signature">Signature:</label>
+                    <div class="controls">
+                        <input class="span4" id="signature" name="setting.Signature" type="text" value="{{.user.Signature}}">
+                    </div>
+                </div>
+                <div class="control-group text">
+                    <label class="text control-label" for="introduction">Introduction:</label>
+                    <div class="controls">
+                        <textarea class="span4" cols="40" name="setting.Introduction" rows="5">{{.user.Introduction}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input class="btn btn-small btn-primary" name="commit" type="submit" value="Save">
+                </div>
+            </form>
+
+            <div class="box">
+                <div class="box-header">
+                    Change Passwd:
+                </div>
+
+                <form accept-charset="UTF-8" action="{{url "Users.ChangePasswd"}}" class="form-horizontal"  method="post">
+                    <div class="control-group">
+                        {{with $field := field "pw.CurrentPasswd" .}}
+                        <label class="control-label" for="user_current_password">current password:</label>
+                        <div class="controls">
+                            <input  name="{{$field.Name}}" size="50" type="password" value="{{$field.Flash}}">
+                            <span class="error">{{$field.Error}}</span>
+                        </div>
+                        {{end}}
+                    </div>
+                    <div class="control-group">
+                        {{with $field := field "pw.NewPasswd" .}}
+                        <label class="password control-label" for="user_password_confirmation">NewPasswd:</label>
+                        <div class="controls">
+                            <input  name="{{$field.Name}}" size="50" type="password" value="{{$field.Flash}}">
+                            <span class="error">{{$field.Error}}</span>
+                        </div>
+                        {{end}}
+                    </div>
+                    <div class="control-group">
+                        {{with $field := field "pw.PasswdRepeat" .}}
+                        <label class="password control-label" for="user_password">NewPasswd Repeat</label>
+                        <div class="controls">
+                            <input name="{{$field.Name}}" size="50" type="password" value="{{$field.Flash}}">
+                            <span class="error">{{$field.Error}}</span>
+                        </div>
+                        {{end}}
+                    </div>
+                    <div class="form-actions">
+                        <input class="btn btn-small btn-primary" name="commit" type="submit" value="修改密码">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{template "footer.html" .}}
